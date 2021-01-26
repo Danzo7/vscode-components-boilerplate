@@ -2,7 +2,7 @@
 	"name": "react-component-template",
 	"displayName": "react component template",
 	"description": "generate react component in typescript/javascript",
-	"version": "0.0.2",
+	"version": "0.0.2s",
 	"engines": {
 		"vscode": "^1.52.0"
 	},
