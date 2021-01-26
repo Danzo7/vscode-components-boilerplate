@@ -7,17 +7,29 @@
 		"vscode": "^1.52.0"
 	},
 	"categories": [
-		"Other"
+		"Other",
+		"Snippets",
+		"Programming Languages"
 	],
 	"activationEvents": [
-		"onCommand:react-component-template.helloWorld"
+		"onCommand:react-component-template.create-react-component"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "explorerResourceIsFolder",
+					"command": "react-component-template.create-react-component",
+					"group": "Hli@React"
+				}
+			]
+		},
 		"commands": [
 			{
-				"command": "react-component-template.helloWorld",
-				"title": "Hello World"
+				"command": "react-component-template.create-react-component",
+				"title": "Create react Component",
+				"args": "component"
 			}
 		]
 	},
@@ -47,5 +59,9 @@
 		"ts-loader": "^8.0.11",
 		"webpack": "^5.10.0",
 		"webpack-cli": "^4.2.0"
+	},
+	"dependencies": {
+		"@types/mustache": "^4.1.1",
+		"mustache": "^4.1.0"
 	}
 }

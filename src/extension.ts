@@ -1,23 +1,43 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { buildReactTemplate } from './utils';
+import * as path from 'path';
 
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
+function validate(componentName: string): string | null {  
+	if (!componentName || componentName === "") {
+	  	return "component name can not be empty";
+	}
+	if (!componentName.match(/^[A-Z]/)) {
+		return "component name has to start with a uppercase alphabet";
+	}
+	if (!componentName.match(/^[0-9a-zA-Z]+$/)) {
+		return "component can't have non-alphanumeric character";
+	}
+	return null;
+}
+
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "react-component-template" is now active!');
+	let disposable = vscode.commands.registerCommand('react-component-template.create-react-component', (e) => {
+		if(!e){
+			vscode.window.showInformationMessage("Just right click on Explorer and Create react Component!");
+			return;
+		}
+		const componentNameOptions: vscode.InputBoxOptions = {
+			prompt: `Component will be created at ${e.fsPath}`,
+			placeHolder: "Enter Component Name",
+			validateInput: validate,
+			ignoreFocusOut: true
+		};
+		vscode.window.showInputBox(componentNameOptions).then(componentName => {
+			if (componentName === undefined) { throw new Error("no name");};
+			const componentFolder = path.join(e.fsPath, componentName);
+			try {
+				buildReactTemplate({scss:true,typescript:true,storybook:false}, componentName, componentFolder);
+			}
+			catch (e){vscode.window.showErrorMessage(e);}
+			
+		});
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('react-component-template.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from react component template!');
 	});
 
 	context.subscriptions.push(disposable);
@@ -25,3 +45,5 @@ export function activate(context: vscode.ExtensionContext) {
 
 // this method is called when your extension is deactivated
 export function deactivate() {}
+
+
