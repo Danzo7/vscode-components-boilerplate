@@ -14,33 +14,32 @@ function validate(componentName: string): string | null {
 	}
 	return null;
 }
-
-export function activate(context: vscode.ExtensionContext) {
-
-	let disposable = vscode.commands.registerCommand('react-component-template.create-react-component', (e) => {
-		if(!e){
-			vscode.window.showInformationMessage("Just right click on Explorer and Create react Component!");
-			return;
-		}
-		const componentNameOptions: vscode.InputBoxOptions = {
-			prompt: `Component will be created at ${e.fsPath}`,
-			placeHolder: "Enter Component Name",
-			validateInput: validate,
-			ignoreFocusOut: true
-		};
-		vscode.window.showInputBox(componentNameOptions).then(componentName => {
-			if (componentName === undefined) { throw new Error("no name");};
-			const componentFolder = path.join(e.fsPath, componentName);
+const excute = ({fsPath}: { fsPath: string; }) => {
+	if (!fsPath) {
+		vscode.window.showInformationMessage("Just right click on Explorer and Create react Component!");
+		return;
+	}
+	const componentNameOptions: vscode.InputBoxOptions = {
+		prompt: `Component will be created at ${fsPath}`,
+		placeHolder: "Enter Component Name",
+		validateInput: validate,
+		ignoreFocusOut: true
+	};
+	vscode.window.showInputBox(componentNameOptions).then(componentName => {
+		if (typeof componentName === "string") {
+			const componentFolder = path.join(fsPath, componentName);
 			try {
-				buildReactTemplate({scss:true,typescript:true,storybook:false}, componentName, componentFolder);
+				buildReactTemplate({ scss: true, typescript: true, storybook: false }, componentName, componentFolder);
 			}
-			catch (e){vscode.window.showErrorMessage(e);}
-			
-		});
-
+			catch (e) { vscode.window.showErrorMessage(e); }
+		
+		}
 	});
 
-	context.subscriptions.push(disposable);
+};
+
+export function activate(context: vscode.ExtensionContext) {
+	context.subscriptions.push(vscode.commands.registerCommand('extension.create-react-component',excute));
 }
 
 // this method is called when your extension is deactivated

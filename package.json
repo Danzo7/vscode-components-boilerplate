@@ -3,6 +3,7 @@
   "displayName": "react component template",
   "description": "generate react component in typescript/javascript",
 	"version": "0.0.2",
+<<<<<<< HEAD
 	"publisher": "danzo7",
   "engines": {
     "vscode": "^1.52.0"
@@ -78,4 +79,3 @@
     "url": "https://github.com/Danzo7/vscode-react-component-template/issues"
   },
   "homepage": "https://github.com/Danzo7/vscode-react-component-template#readme"
-}
