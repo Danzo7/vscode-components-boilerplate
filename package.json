@@ -3,7 +3,6 @@
   "displayName": "react component template",
   "description": "generate react component in typescript/javascript",
 	"version": "0.0.2",
-<<<<<<< HEAD
 	"publisher": "danzo7",
   "engines": {
     "vscode": "^1.52.0"
