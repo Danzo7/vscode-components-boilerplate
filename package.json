@@ -12,7 +12,7 @@
 		"Programming Languages"
 	],
 	"activationEvents": [
-		"onCommand:react-component-template.create-react-component"
+		"onCommand:extension.create-react-component"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
@@ -20,16 +20,15 @@
 			"explorer/context": [
 				{
 					"when": "explorerResourceIsFolder",
-					"command": "react-component-template.create-react-component",
+					"command": "extension.create-react-component",
 					"group": "Hli@React"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "react-component-template.create-react-component",
-				"title": "Create react Component",
-				"args": "component"
+				"command": "extension.create-react-component",
+				"title": "Create react Component"
 			}
 		]
 	},
