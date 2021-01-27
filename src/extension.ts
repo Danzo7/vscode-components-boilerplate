@@ -31,8 +31,12 @@ const excute = ({fsPath}: { fsPath: string; }) => {
 			try {
 				buildReactTemplate({ scss: true, typescript: true, storybook: false }, componentName, componentFolder);
 			}
-			catch (e) { vscode.window.showErrorMessage(e); }
-		
+			catch (e) { vscode.window.showErrorMessage("something happened "+e); }
+			vscode.window.showInformationMessage(componentName+" component has been created under "+componentFolder);
+
+		}
+		else {
+			vscode.window.showErrorMessage("something went wrong");
 		}
 	});
 

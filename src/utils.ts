@@ -1,8 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as mustache from 'mustache';
-import REACT_TEMPLATES from './templates/react';
-import { FILE } from 'dns';
+import buildInTemplate from './template';
 
 export const buildReactTemplate = ({scss,typescript,storybook}: { scss: Boolean,typescript:boolean,storybook:boolean}, componentName: string, cPath: string) => {
     
@@ -10,7 +9,7 @@ export const buildReactTemplate = ({scss,typescript,storybook}: { scss: Boolean,
     let indexExtension = typescript? ".ts" : ".js";
     let componentExtension = `${indexExtension}x`;
 
-    const FILE_NAMES = {
+    const options = {
         styleDir: `style`,
         styling: `style/index${stylingExtension}`,
         component: `${componentName}${componentExtension}`,
@@ -18,13 +17,19 @@ export const buildReactTemplate = ({scss,typescript,storybook}: { scss: Boolean,
         storybook: `${componentName}.stories${componentExtension}`
     };
 
-    const COMPONENT_TEMPLATE = indexExtension === ".ts" ? REACT_TEMPLATES.TS_TEMPLATE : REACT_TEMPLATES.JS_TEMPLATE;
-    
+    const COMPONENT_TEMPLATE = indexExtension === ".ts" ? buildInTemplate.typescript : buildInTemplate.javascript;
+     // Creating style directory
+     fs.mkdirSync(cPath);
+     // Creating style directory
+     fs.mkdirSync(path.join(
+        cPath,
+        options.styleDir
+    ));
     // Writing main component file
    fs.writeFileSync(
         path.join(
             cPath,
-            FILE_NAMES.component
+            options.component
         ),
         mustache.render(COMPONENT_TEMPLATE, {componentName})
     );
@@ -33,24 +38,20 @@ export const buildReactTemplate = ({scss,typescript,storybook}: { scss: Boolean,
      fs.writeFileSync(
         path.join(
             cPath,
-            FILE_NAMES.componentIndex
+            options.componentIndex
         ),
-        mustache.render(REACT_TEMPLATES.INDEX, {componentName})
+        mustache.render(buildInTemplate.index, {componentName})
     );
     
-    // Creating style directory
-     fs.mkdirSync(path.join(
-        cPath,
-        FILE_NAMES.styleDir
-    ));
+   
 
     // Writing component styling file
      fs.writeFileSync(
         path.join(
             cPath,
-            FILE_NAMES.styling
+            options.styling
         ),
-        mustache.render(REACT_TEMPLATES.STYLING, {componentName})
+        mustache.render(buildInTemplate.style, {componentName})
     );
 
     // Writing storybook file
@@ -58,9 +59,9 @@ export const buildReactTemplate = ({scss,typescript,storybook}: { scss: Boolean,
    fs.writeFileSync(
             path.join(
                 cPath,
-                FILE_NAMES.storybook
+                options.storybook
             ),
-            mustache.render(REACT_TEMPLATES.STORYBOOK, {componentName})
+            mustache.render(buildInTemplate.storybook, {componentName})
         );
     }
 

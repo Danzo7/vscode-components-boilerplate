@@ -1,17 +1,21 @@
 {
-  "name": "react-component-template",
-  "displayName": "react component template",
+  "name": "create-react-component",
+  "displayName": "create react component",
   "description": "generate react component in typescript/javascript",
-	"version": "0.0.2",
+  "version": "0.0.3",
 	"publisher": "danzo7",
   "engines": {
     "vscode": "^1.52.0"
   },
   "categories": [
-    "Other",
-    "Snippets",
-    "Programming Languages"
-  ],
+		"Snippets"
+	],
+	"keywords": [
+		"create react component",
+		"create component",
+		"generate component",
+		"reactJs"	
+	],
   "activationEvents": [
     "onCommand:extension.create-react-component"
   ],
@@ -29,7 +33,7 @@
     "commands": [
       {
         "command": "extension.create-react-component",
-        "title": "Create react Component",
+        "title": "new react Component...",
         "args": "component"
       }
     ]
@@ -69,12 +73,10 @@
     "type": "git",
     "url": "git+https://github.com/Danzo7/vscode-react-component-template.git"
   },
-  "keywords": [
-    "snippet"
-  ],
   "author": "danzo7",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Danzo7/vscode-react-component-template/issues"
   },
-  "homepage": "https://github.com/Danzo7/vscode-react-component-template#readme"
+	"homepage": "https://github.com/Danzo7/vscode-react-component-template#readme"
+}

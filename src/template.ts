@@ -1,5 +1,5 @@
 export default {
-  JS_TEMPLATE: `
+  javascript: `
 import React, { Fragment } from 'react';
 import './styles/index{{StyleExtension}}';
 const {{componentName}} = (props) => {
@@ -7,7 +7,7 @@ const {{componentName}} = (props) => {
 };
 export default {{componentName}}
 `,
-  TS_TEMPLATE: `
+  typescript: `
 //
 import React from 'react';
 import './styles/index{{StyleExtension}}';
@@ -28,7 +28,7 @@ function {{componentName}}({}: {{componentName}}) {
 export default {{componentName}};
 
 `,
-  STORYBOOK: `
+  storybook: `
 import React, {Fragment} from 'react';
 import {{componentName}} from './{{componentName}}';
 export default {title: 'Component|{{componentName}}'};
@@ -38,9 +38,9 @@ export const {{componentName}}Example = () => (
   </Fragment>
 );
 `,
-  INDEX: `
+  index: `
 import {{componentName}} from './{{componentName}}';
 export default {{componentName}};    
 `,
-  STYLING: ``
+  style: ``
 };
