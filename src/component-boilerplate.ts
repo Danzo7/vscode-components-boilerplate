@@ -1,5 +1,5 @@
 export default {
-  javascript: `
+  "{{componentName}}.js": `
 import React, { Fragment } from 'react';
 import './styles/index{{StyleExtension}}';
 const {{componentName}} = (props) => {
@@ -7,7 +7,7 @@ const {{componentName}} = (props) => {
 };
 export default {{componentName}}
 `,
-  typescript: `
+"{{componentName}}.tsx": `
 import React from 'react';
 import './styles/index{{StyleExtension}}';
 interface {{componentName}} {
@@ -22,7 +22,7 @@ function {{componentName}}({}: {{componentName}}) {
 export default {{componentName}};
 
 `,
-  storybook: `
+"{{componentName}}.storybook.js": `
 import React, {Fragment} from 'react';
 import {{componentName}} from './{{componentName}}';
 export default {title: 'Component|{{componentName}}'};
@@ -32,9 +32,9 @@ export const {{componentName}}Example = () => (
   </Fragment>
 );
 `,
-  index: `
+"{{componentName}}.ts": `
 import {{componentName}} from './{{componentName}}';
 export default {{componentName}};    
 `,
-  style: ``
+"style/index.scss": ``
 };

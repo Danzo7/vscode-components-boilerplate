@@ -1,5 +1,5 @@
-import * as vscode from 'vscode';
-import { buildReactTemplate } from './utils';
+import  {workspace,window,ExtensionContext,commands,InputBoxOptions} from 'vscode';
+import buildTemplate from './utils';
 import * as path from 'path';
 
 function validate(componentName: string): string | null {  
@@ -16,34 +16,42 @@ function validate(componentName: string): string | null {
 }
 const excute = ({fsPath}: { fsPath: string; }) => {
 	if (!fsPath) {
-		vscode.window.showInformationMessage("Just right click on Explorer and Create react Component!");
+		window.showInformationMessage("Just right click on Explorer and Create react Component!");
 		return;
 	}
-	const componentNameOptions: vscode.InputBoxOptions = {
+	const componentNameOptions: InputBoxOptions = {
 		prompt: `Component will be created at ${fsPath}`,
 		placeHolder: "Enter Component Name",
 		validateInput: validate,
 		ignoreFocusOut: true
 	};
-	vscode.window.showInputBox(componentNameOptions).then(componentName => {
+	
+
+
+	window.showInputBox(componentNameOptions).then(componentName => {
 		if (typeof componentName === "string") {
 			const componentFolder = path.join(fsPath, componentName);
 			try {
-				buildReactTemplate({ scss: true, typescript: true, storybook: false }, componentName, componentFolder);
+				if (!workspace.workspaceFolders || workspace.workspaceFolders.length < 1) {
+								window.showErrorMessage("please open a workspace first");
+
+					return null;
 			}
-			catch (e) { vscode.window.showErrorMessage("something happened "+e); }
-			vscode.window.showInformationMessage(componentName+" component has been created under "+componentFolder);
+				buildTemplate(componentName, componentFolder,workspace.workspaceFolders[0].uri.path);
+			}
+			catch (e) { window.showErrorMessage("something happened "+e); }
+			window.showInformationMessage(componentName+" component has been created under "+componentFolder);
 
 		}
 		else {
-			vscode.window.showErrorMessage("something went wrong");
+			window.showErrorMessage("something went wrong");
 		}
 	});
 
 };
 
-export function activate(context: vscode.ExtensionContext) {
-	context.subscriptions.push(vscode.commands.registerCommand('extension.create-react-component',excute));
+export function activate(context: ExtensionContext) {
+	context.subscriptions.push(commands.registerCommand('extension.create-react-component',excute));
 }
 
 // this method is called when your extension is deactivated
