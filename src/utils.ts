@@ -66,8 +66,8 @@ import buildInBoiler from './component-boilerplate.js';
      const boilerplateFile = path.join(workspace, "components-boilerplate.js");
      console.log(workspace);
     fs.mkdirSync(cPath,{ recursive: true });
-    const config = JSON.parse(mustache.render((fs.existsSync(boilerplateFile) ? require(boilerplateFile) : buildInBoiler).toString(),{ componentName }));
-     const plates: [string, string][] = Object.entries(config);
+    const plates: [string, string][] = JSON.parse(mustache.render((fs.existsSync(boilerplateFile) ? require(boilerplateFile) : buildInBoiler).toString(),{ componentName }));
+ //    const plates: [string, string][] = Object.entries(config);
      plates.forEach(([tPath, content]) => {
          if (path.dirname(tPath) !== ".") {
              fs.mkdirSync(path.join(cPath, path.dirname(tPath)), { recursive: true });
