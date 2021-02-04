@@ -34,13 +34,20 @@ const excute = ({fsPath}: { fsPath: string; }) => {
 			try {
 				if (!workspace.workspaceFolders || workspace.workspaceFolders.length < 1) {
 								window.showErrorMessage("please open a workspace first");
-
 					return null;
 			}
-				buildTemplate(componentName, componentFolder,workspace.workspaceFolders[0].uri.path);
+			const config={
+				"framework":workspace.getConfiguration().get("componentBoiler.component.framework"),
+				"typescript":workspace.getConfiguration().get("componentBoiler.component.Typescript"),
+				"styling":workspace.getConfiguration().get("componentBoiler.component.Styling"),
+				"storybook":workspace.getConfiguration().get("componentBoiler.component.StoryBook")
+			};
+			console.log("config: "+config);
+				buildTemplate([componentName], componentFolder,workspace.workspaceFolders[0].uri.path,config);
+				window.showInformationMessage(componentName+" component has been created under "+componentFolder);
+
 			}
 			catch (e) { window.showErrorMessage("something happened "+e); }
-			window.showInformationMessage(componentName+" component has been created under "+componentFolder);
 
 		}
 		else {
@@ -51,7 +58,7 @@ const excute = ({fsPath}: { fsPath: string; }) => {
 };
 
 export function activate(context: ExtensionContext) {
-	context.subscriptions.push(commands.registerCommand('extension.create-react-component',excute));
+	context.subscriptions.push(commands.registerCommand('extension.boil-a-component',excute));
 }
 
 // this method is called when your extension is deactivated

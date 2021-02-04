@@ -1,39 +1,79 @@
 {
-  "name": "create-react-component",
-  "displayName": "create react component",
-  "description": "generate react component in typescript/javascript",
-  "version": "0.0.4",
-  "publisher": "danzo7",
+  "name": "components-boilerplate",
+  "displayName": "Components boilerplate",
+  "description": "generate component folders and files, reactJs, vueJS ...etc, based on predefined or custom hierarchy",
+  "version": "0.1.0",
+  "publisher": "Danzo7",
   "engines": {
     "vscode": "^1.52.0"
   },
   "categories": [
-    "Snippets"
+    "Snippets",
+    "Formatters"
   ],
   "keywords": [
     "create react component",
     "create component",
     "generate component",
-    "reactJs"
+    "reactJs component",
+    "costume component folder",
+    "component folder generator",
+    "any component generator"
   ],
   "activationEvents": [
-    "onCommand:extension.create-react-component"
+    "onCommand:extension.boil-a-component"
   ],
   "main": "./dist/extension.js",
   "contributes": {
+    "configuration": {
+      "title": "Components boilerplate",
+      "properties": {
+        "componentBoiler.CustomMustacheTemplates":{
+          "type": "array",
+          "markdownDescription": "Mustache sting to be replaced whe using costom configuration fileonly used when detected"
+        },
+        "componentBoiler.component.framework":{
+          "type": "string",
+          "default": "reactJs",
+          "enum": ["reactJs", "vueJs"],
+          "enumDescriptions": [
+            "Use ReactJs framework",
+            "Use VueJs framework"
+          ]
+        },
+        "componentBoiler.component.Typescript":{
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Use typescript notation"},
+          "componentBoiler.component.StoryBook":{
+            "type": "boolean",
+            "default": false,
+            "markdownDescription": "add storybook file to the component"},
+        "componentBoiler.component.Styling": {
+          "type": "string",
+          "default": "css",
+          "enum": ["css", "scss"],
+          "enumDescriptions": [
+            "Use css styling",
+            "Use scss styling"
+          ]
+        }
+      }
+  },
+    
     "menus": {
       "explorer/context": [
         {
           "when": "explorerResourceIsFolder",
-          "command": "extension.create-react-component",
+          "command": "extension.boil-a-component",
           "group": "Hli@React"
         }
       ]
     },
     "commands": [
       {
-        "command": "extension.create-react-component",
-        "title": "new react Component...",
+        "command": "extension.boil-a-component",
+        "title": "Boil a new component...",
         "args": "component"
       }
     ]
@@ -50,18 +90,19 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/vscode": "^1.52.0",
     "@types/glob": "^7.1.3",
     "@types/mocha": "^8.0.4",
     "@types/node": "^12.11.7",
-    "eslint": "^7.15.0",
+    "@types/vscode": "^1.52.0",
+    "@types/yargs": "^16.0.0",
     "@typescript-eslint/eslint-plugin": "^4.9.0",
     "@typescript-eslint/parser": "^4.9.0",
+    "eslint": "^7.15.0",
     "glob": "^7.1.6",
     "mocha": "^8.1.3",
+    "ts-loader": "^8.0.11",
     "typescript": "^4.1.2",
     "vscode-test": "^1.4.1",
-    "ts-loader": "^8.0.11",
     "webpack": "^5.10.0",
     "webpack-cli": "^4.2.0"
   },
@@ -78,5 +119,6 @@
   "bugs": {
     "url": "https://github.com/Danzo7/vscode-react-component-template/issues"
   },
-  "homepage": "https://github.com/Danzo7/vscode-react-component-template#readme"
+  "homepage": "https://github.com/Danzo7/vscode-react-component-template#readme",
+  "typings": "src"
 }

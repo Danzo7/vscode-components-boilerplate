@@ -3,8 +3,9 @@
 		"module": "commonjs",
 		"target": "es6",
 		"outDir": "out",
+		"noImplicitAny": false,
 		"lib": [
-			"es6"
+			"esNext"
 		],
 		"sourceMap": true,
 		"rootDir": "src",
@@ -18,4 +19,9 @@
 		"node_modules",
 		".vscode-test"
 	]
+	,
+	"include": [
+        "src/**/*",
+        ".d.ts",   // declaration file path
+      ],
 }

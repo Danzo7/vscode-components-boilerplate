@@ -1,4 +1,4 @@
-export default [
+config= [
   [
     "{{componentName}}.tsx",
     `
@@ -47,5 +47,6 @@ export default {{componentName}};
   export default {{componentName}};    
   `,
   ],
-  ["style/index.scss", ``],
+  ["style/indeu.scss", `xxxxxx`],
 ];
+
