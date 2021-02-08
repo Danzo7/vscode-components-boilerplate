@@ -2,7 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as mustache from 'mustache';
 import * as vm from 'vm';
-
 import options  from './component-boilerplate';
 const generatePlateFromBuildIn = ({ framework = "reactJs", typescript = false, styling = "css", storybook = false }) => {
     

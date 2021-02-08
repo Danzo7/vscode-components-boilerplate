@@ -10,9 +10,6 @@
     "typescript.tsc.autoDetect": "off",
     "god.tsconfig": "./tsconfig.json",
     "css.customData": [],
-    "componentBoiler.component.StoryBook": true,
-    "componentBoiler.component.Styling": "scss",
-    "componentBoiler.component.Typescript": true,
     "componentBoiler.CustomMustacheTemplates": [
         
     ],

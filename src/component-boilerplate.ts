@@ -40,19 +40,19 @@ const options:IOption =
   
   `],
 
-            ["{{componentName}}.ts",
+            ["index.ts",
             `
   import {{componentName}} from './{{componentName}}';
   export default {{componentName}};    
   `,
           ]],
         javascript: [
-          "{{componentName}}.js",
+          "{{componentName}}.jsx",
           `
       import React, { Fragment } from 'react';
       import './styles/index{{StyleExtension}}';
       const {{componentName}} = (props) => {
-        return <Fragment></Fragment>;
+        return <div></div>;
       };
       export default {{componentName}};
       `,
