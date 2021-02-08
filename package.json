@@ -113,13 +113,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Danzo7/vscode-react-component-template.git"
+    "url": "https://github.com/Danzo7/vscode-components-boilerplate.git"
   },
   "author": "danzo7",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Danzo7/vscode-react-component-template/issues"
+    "url": "https://github.com/Danzo7/vscode-components-boilerplate/issues"
   },
-  "homepage": "https://github.com/Danzo7/vscode-react-component-template#readme",
+  "homepage": "https://github.com/Danzo7/vscode-components-boilerplate",
   "typings": "src"
 }
