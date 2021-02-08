@@ -7,7 +7,7 @@
   "engines": {
     "vscode": "^1.52.0"
   },
-  "icon": "./src/images/icon.png",
+  "icon": "images/icon.png",
   "categories": [
     "Snippets",
     "Formatters"
