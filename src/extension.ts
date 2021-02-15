@@ -25,7 +25,7 @@ const excute = ({fsPath}: { fsPath: string; }) => {
 		validateInput: validate,
 		ignoreFocusOut: true
 	};
-	
+	window.showQuickPick
 
 
 	window.showInputBox(componentNameOptions).then(componentName => {
@@ -42,8 +42,9 @@ const excute = ({fsPath}: { fsPath: string; }) => {
 				"styling":workspace.getConfiguration().get("componentBoiler.component.Styling"),
 				"storybook":workspace.getConfiguration().get("componentBoiler.component.StoryBook")
 			};
-			console.log("config: "+config);
-				buildTemplate([componentName], componentFolder,workspace.workspaceFolders[0].uri.path,config);
+				console.log("config: " + config);
+				
+				buildTemplate([componentName], componentFolder,workspace.workspaceFolders[0].uri.path,config,);
 				window.showInformationMessage(componentName+" component has been created under "+componentFolder);
 
 			}

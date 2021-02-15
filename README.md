@@ -22,7 +22,7 @@ You can use default templates to generate components
 The default templates ais opinionated, admittedly. They adhere to the principles of feature-based structuring, as promoted in this article by Max Stoiber.
 >You dont have to use the default templates and you should'nt.
 
-## Costumize templates
+## Customize templates
 You can use a costum template boilerplate to generate your component just by adding a confguration file to the root folder.
 create a file in the root folder and name it `components-boilerplate.js`
 use this syntax  `[string=path,string=content][]`
@@ -46,7 +46,7 @@ Use the backtick \`` to avoid the missmatching
     '{{componentName}}.tsx',
     `
   import React from 'react';
-  import './styles/index{{StyleExtension}}';
+  import './index.scss';
   interface {{componentName}} {
   }
   
@@ -67,11 +67,18 @@ Use the backtick \`` to avoid the missmatching
     export default {{componentName}};    
     `,
   ],
-  ['style/index.scss', ``],
+  [
+    'index.scss',
+    `.{{componentName}}{
+    
+  }`,
+  ],
 ];
+
 ```
 ## report issues an featues
 [create an issue](https://github.com/Danzo7/vscode-components-boilerplate/issues)
 ## Roadmap
-- add suppoet for multiple templates
-- add support for multiple cases (now only name)
+- add support for multiple costum boilerplates
+- add support for costum variables (now only name)
+- add more templates

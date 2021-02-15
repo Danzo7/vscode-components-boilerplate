@@ -2,7 +2,7 @@
   "name": "components-boilerplate",
   "displayName": "Components boilerplate",
   "description": "generate component folders and files, reactJs, vueJS ...etc, based on predefined or custom hierarchy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "Danzo7",
   "engines": {
     "vscode": "^1.52.0"

@@ -26,7 +26,7 @@ const options:IOption =
           "{{componentName}}.tsx",
           `
   import React from 'react';
-  import './styles/index{{StyleExtension}}';
+  import './styles/index';
   interface {{componentName}} {
   }
   
