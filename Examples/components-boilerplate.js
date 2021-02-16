@@ -3,7 +3,7 @@
     '{{componentName}}.tsx',
     `
   import React from 'react';
-  import './styles/index{{StyleExtension}}';
+  import './index.scss';
   interface {{componentName}} {
   }
   
@@ -24,5 +24,10 @@
     export default {{componentName}};    
     `,
   ],
-  ['style/index.scss', ``],
+  [
+    'index.scss',
+    `.{{componentName}}{
+    
+  }`,
+  ],
 ];
