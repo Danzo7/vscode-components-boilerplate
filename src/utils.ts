@@ -27,7 +27,7 @@ export function getBoilerPlatesFromConfig(workspace: string, configfile: string)
     return {inputs,boilerplates};
 
 }
-const generatePlateFromBuildIn = ({ framework = "reactJs", typescript = false, styling = "css", storybook = false }) => {
+export const generatePlateFromBuildIn = ({ framework = "reactJs", typescript = false, styling = "css", storybook = false }) => {
     
     let result: [string, string][] = [];
     if (typescript&&options.framework[framework].typescript) { 

@@ -43,7 +43,6 @@ export class ShowMultiple{
   details: string[];
   results: any[]=[];
   constructor(value:any, details:string[]) {
- //if (placeholders.length < length) {throw new Error("Plaeholders have to have the same length as values");}
     this.details = details;
     this.value = value;
   }
