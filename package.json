@@ -27,47 +27,7 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Boilerplate Generator",
-      "properties": {
-        "componentBoiler.CustomMustacheTemplates": {
-          "type": "array",
-          "markdownDescription": "Mustache sting to be replaced whe using costom configuration fileonly used when detected"
-        },
-        "componentBoiler.component.framework": {
-          "type": "string",
-          "default": "reactJs",
-          "enum": [
-            "reactJs",
-            "vueJs"
-          ],
-          "enumDescriptions": [
-            "Use ReactJs framework",
-            "Use VueJs framework"
-          ]
-        },
-        "componentBoiler.component.Typescript": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "Use typescript notation"
-        },
-        "componentBoiler.component.StoryBook": {
-          "type": "boolean",
-          "default": false,
-          "markdownDescription": "add storybook file to the component"
-        },
-        "componentBoiler.component.Styling": {
-          "type": "string",
-          "default": "css",
-          "enum": [
-            "css",
-            "scss"
-          ],
-          "enumDescriptions": [
-            "Use css styling",
-            "Use scss styling"
-          ]
-        }
-      }
+      "title": "Boilerplate Generator"
     },
     "menus": {
       "explorer/context": [

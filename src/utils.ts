@@ -2,19 +2,21 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as mustache from 'mustache';
 import * as vm from 'vm';
-import options from './component-boilerplate';
+import { READ_FAIL } from './errors';
 export function getBoilerPlatesFromConfig(workspace: string, configfile: string) {
     const boilerplateFile = path.join(workspace, configfile);
-    let boilerplates;
+    let boilerplates:any;
     try {
          boilerplates = vm.runInThisContext(fs.readFileSync(boilerplateFile, 'utf8'));
     }
     catch (err){
         try {
+            console.warn("tying windows fix");
             boilerplates = vm.runInThisContext(fs.readFileSync(boilerplateFile.replace("\\", ""), 'utf8'));
         }
         catch (err) {
-            console.error("no config file found maybe :/  " + err);
+            console.error(err);
+            throw new Error(READ_FAIL);
         }
     }
     let inputs :any= [];
@@ -27,39 +29,20 @@ export function getBoilerPlatesFromConfig(workspace: string, configfile: string)
     return {inputs,boilerplates};
 
 }
-export const generatePlateFromBuildIn = ({ framework = "reactJs", typescript = false, styling = "css", storybook = false }) => {
-    
-    let result: [string, string][] = [];
-    if (typescript&&options.framework[framework].typescript) { 
-        options.framework[framework].typescript.forEach(e => result.push(e));
-    }
-    else {
-        result.push(options.framework[framework].javascript);
-    }
-    if (storybook&&options.framework[framework].storybook) {
-        result.push(options.framework[framework].storybook);
-    };
-    result.push(options.styling[styling]);
-    return result;
-};
-const buildTemplate = (variant: {[x: string]:string}[], cPath: string, config) => {
+const buildTemplate = (variant: {[x: string]:string}[], wPath: string, config) => {
     let plates: [string, string][];
-    try {
         plates = JSON.parse(mustache.render(JSON.stringify(config),variant));
-    }
-    catch (e) {
-        plates = JSON.parse(mustache.render(JSON.stringify(generatePlateFromBuildIn(config)),variant));
-    }
-    //create component directory
-    fs.mkdirSync(cPath, { recursive: true });
+    //create wrapper directory
+    //TODO:ADD optional wrapper directory
+    fs.mkdirSync(wPath, { recursive: true });
     
         plates.forEach(([tPath, content]) => {
          if (path.dirname(tPath) !== ".") {
-             fs.mkdirSync(path.join(cPath, path.dirname(tPath)), { recursive: true });
+             fs.mkdirSync(path.join(wPath, path.dirname(tPath)), { recursive: true });
          };
         fs.writeFileSync(
             path.join(
-                cPath,tPath),
+                wPath,tPath),
             content
         );
         });
