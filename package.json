@@ -1,8 +1,8 @@
 {
-  "name": "components-boilerplate",
-  "displayName": "Components boilerplate",
-  "description": "generate component folders and files, reactJs, vueJS ...etc, based on predefined or custom hierarchy",
-  "version": "0.1.2",
+  "name": "boilerplate-generator",
+  "displayName": "Boilerplate Generator",
+  "description": "generate boilerplates folders and files with boilerplate content from a json object,e.g. reactJs components.",
+  "version": "1.0.0",
   "publisher": "Danzo7",
   "engines": {
     "vscode": "^1.52.0"
@@ -22,59 +22,66 @@
     "any component generator"
   ],
   "activationEvents": [
-    "onCommand:extension.boil-a-component"
+    "onCommand:extension.generate-boilerplate"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Components boilerplate",
+      "title": "Boilerplate Generator",
       "properties": {
-        "componentBoiler.CustomMustacheTemplates":{
+        "componentBoiler.CustomMustacheTemplates": {
           "type": "array",
           "markdownDescription": "Mustache sting to be replaced whe using costom configuration fileonly used when detected"
         },
-        "componentBoiler.component.framework":{
+        "componentBoiler.component.framework": {
           "type": "string",
           "default": "reactJs",
-          "enum": ["reactJs", "vueJs"],
+          "enum": [
+            "reactJs",
+            "vueJs"
+          ],
           "enumDescriptions": [
             "Use ReactJs framework",
             "Use VueJs framework"
           ]
         },
-        "componentBoiler.component.Typescript":{
+        "componentBoiler.component.Typescript": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Use typescript notation"},
-          "componentBoiler.component.StoryBook":{
-            "type": "boolean",
-            "default": false,
-            "markdownDescription": "add storybook file to the component"},
+          "markdownDescription": "Use typescript notation"
+        },
+        "componentBoiler.component.StoryBook": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "add storybook file to the component"
+        },
         "componentBoiler.component.Styling": {
           "type": "string",
           "default": "css",
-          "enum": ["css", "scss"],
+          "enum": [
+            "css",
+            "scss"
+          ],
           "enumDescriptions": [
             "Use css styling",
             "Use scss styling"
           ]
         }
       }
-  },
-    
+    },
     "menus": {
       "explorer/context": [
         {
           "when": "explorerResourceIsFolder",
-          "command": "extension.boil-a-component",
+          "command": "extension.generate-boilerplate",
           "group": "Hli@React"
         }
       ]
     },
     "commands": [
       {
-        "command": "extension.boil-a-component",
-        "title": "Boil a new component...",
+        "command": "extension.generate-boilerplate",
+        "title": "Generate a new boilerplate...",
         "args": "component"
       }
     ]

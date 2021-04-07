@@ -1,4 +1,4 @@
-[
+[{name:"react",variant:["componentName"],template:[
   [
     '{{componentName}}.tsx',
     `
@@ -30,4 +30,4 @@
     
   }`,
   ],
-];
+]}];
