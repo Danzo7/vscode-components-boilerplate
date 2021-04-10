@@ -27,7 +27,13 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Boilerplate Generator"
+      "title": "Boilerplate Generator",
+      "properties": {
+        "boilerplate.generator.isWrapped":{
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Disable this if you don't want to wrap your component. > In default generated components are wrapped under a directory name of the first variant in config"}
+      }
     },
     "menus": {
       "explorer/context": [

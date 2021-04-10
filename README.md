@@ -1,84 +1,74 @@
 # Components boilerplate
 
-Components boilerplate is an extension that help you organize your components and be more productive,its work by allowing users to spawn/generate predefined component with specific name using a specific folders hierarchy and files defined by the boilerplate,
->the generated component files will be filled using the specified name by a boilerplate code.
-## How to use?
-- Right click any directory in the explorer panel
-- Select Boil a new component
-- enter the name
-- Submit
+Boilerplate generator is a tool to generate code from a predefined configuration.
+>boilerplate generator work by generating files/folders from a giving configuration javaScript object.
+## Guide of usage
+### Creating config file:
+To be able to generate a well defined component you have to create a boilerplate config file with the necessary  boilerplate code, A config file must be in your workspace project directory under the name `boilerplates.config.js`.
+### config structure:
+the config file contains `BoilerplateConfig[]`.
+##### Type definition:
+```ts
+interface BoilerplateConfig {
+  name: string;
+  variants: string[];
+  template:[string,string][];
+}
+```
 
-## Configuration
-You can use default templates to generate components 
-``preferences>extenstion>components boilerplate``
-### here you can see this options
-| configuration | definition |options|
-| ------ | ------ | ------ |
-|typescript|if true will generate .ts file |boolean|
-|framework|if react will generate .jsx/.tsx file|currently support: react|
-|styling|styling method generate .css/.scss| scss\|css|
 
-### Whats are this Files??
-The default templates ais opinionated, admittedly. They adhere to the principles of feature-based structuring, as promoted in this article by Max Stoiber.
->You dont have to use the default templates and you should'nt.
-
-## Customize templates
-You can use a costum template boilerplate to generate your component just by adding a confguration file to the root folder.
-create a file in the root folder and name it `components-boilerplate.js`
-use this syntax  `[string=path,string=content][]`
-
-| option | definition |
+| propriety | definition |
 | ------ | ------ | 
-|path:string|path to the generated file example: `path/to/file.js` (create new file at `selectedFolder/componentName/path/to/file.js`)|
-|content:string|the content of the generated file. |
-### content
-the file content is the boilerplate code with a name placeholder
-We use mustache.js to replace the placeholders
-####  placeholders
-``{{componentName}}``: the name of component that you submit
-Use the backtick \`` to avoid the missmatching
->>`components-boilerplate.js` is not a loaded as js you dont need to use any variable declaration you just need to declare an array with the defined configs
-### example
-`components-boilerplate.js`
-```
+|name : string|represent name of the boilerplate,in case you have more then on element in the config array you will be asked to select a boilerplate template by name|
+|variants : string[]|array of string will be used later to fill the boilerplate code|
+|template:[path,content][]|contain the path and content of the file that will be generated|
+
+```js
 [
-  [
-    '{{componentName}}.tsx',
-    `
-  import React from 'react';
-  import './index.scss';
-  interface {{componentName}} {
+  { name:"helloWorld",
+    variants:["variant1","variant2","variant3"],
+    template:[
+      ["path/{{variant1}}.txt",
+      "{{variant2}} {{variant3}}"],
+      ["path/{{variant1}}.css",
+      "{{variant2}}:{{variant3}}"]
+      ]
+    },
+  {}
+  ]
+```
+
+### How to use variants:
+variants are a placeholders to variables,You have to provide a value for each variant when generating a component.
+[Mustache.js](https://github.com/janl/mustache.js) is used to replace variants in template.
+example: 
+```js
+[
+  { name:"template_name",
+    variants:["name","variable"],
+    template:[
+      [`index.js`,
+       `import {{variable}} from "{{variant1}}.js"`
+      ],
+      [`{{variant1}}.js`,
+       `export default {{variable}}="hello world";`
+      ]
+    ]
   }
-  
-  function {{componentName}}({}: {{componentName}}) {
-    return (
-      <div className="{{componentName}}"></div>
-    );
-  }
-  
-  export default {{componentName}};
-  
-  `,
-  ],
-  [
-    'index.ts',
-    `
-    import {{componentName}} from './{{componentName}}';
-    export default {{componentName}};    
-    `,
-  ],
-  [
-    'index.scss',
-    `.{{componentName}}{
-    
-  }`,
-  ],
-];
+]
+ 
 
 ```
-## report issues an featues
+
+### Plugin options:
+|Option|Value|Definition
+|------|------|-----|
+|Wrapped|`Default:True`|When enabled first variant  will be used as a wrapper directory for the generated files
+
+
+## report issues and features
 [create an issue](https://github.com/Danzo7/vscode-components-boilerplate/issues)
 ## Roadmap
-- add support for multiple costum boilerplates
-- add support for costum variables (now only name)
-- add more templates
+- [x] add support for multiple custom boilerplates.
+- [x] add support for custom variables (now only name).
+- ~~add more templates~~.
