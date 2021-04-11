@@ -1,15 +1,17 @@
 # Components boilerplate
+![Logo](assets/logo.png)
 
-Components boilerplate is a tool to generate code pattern from a predefined configuration.
-Components boilerplates generates files/folders/code from a giving configuration file.
->This will increase productivity and help maintain the same files structure across different developers/project.
+    Components boilerplate is a tool to generate code pattern from a predefined configuration.
+.
+>This tool will increase the productivity and help maintain the same files structure across different developers/project.
 ## Guide of usage
+Components boilerplates generates files/folders/code from a giving configuration file.
 ### Creating config file:
-To be able to generate a well defined component you have to create a boilerplate config file with the necessary boilerplate code.
-* A valid config file must be in your workspace project directory under the name of `boilerplates.config.js` for the plugin to work.
+To be able to generate a well defined components you have to create a boilerplate config file with the necessary boilerplate code.
+* A valid config file must be in your workspace project directory under the name of `boilerplates.config.js` in order for the plugin to work.
 ### config structure:
 the config file contains `BoilerplateConfig[]`.
-##### Type definition:
+##### **Type definition:**
 ```ts
 interface BoilerplateConfig {
   name: string;
@@ -19,24 +21,22 @@ interface BoilerplateConfig {
 ```
 
 
-| propriety | definition |
-| ------ | ------ | 
-|name : string|represent name of the boilerplate,in case you have more then on element in the config array you will be asked to select a boilerplate template by name|
-|variants : string[]|array of string will be used later to fill the boilerplate code|
-|template:[path,content][]|contain the path and content of the file that will be generated|
+| proprieties | definition |
+| -----| ------ | 
+|``name : string``|represent name of the boilerplate,in case you have more then on element in the config array you will be asked to select a boilerplate template by name|
+|``variants : string[]``|array of string will be used later to fill the boilerplate code|
+|``template:[path,content][]``|contain the path and content of the file that will be generated|
 
 ```js
 [
-  { name:"helloWorld",
-    variants:["variant1","variant2","variant3"],
+  { name:"name",
+    variants:[...],
     template:[
-      ["path/{{variant1}}.txt",
-      "{{variant2}} {{variant3}}"],
-      ["path/{{variant1}}.css",
-      "{{variant2}}:{{variant3}}"]
+      [path,content],
+      ...
       ]
     },
-  {}
+    ...
   ]
 ```
 
@@ -44,6 +44,8 @@ interface BoilerplateConfig {
 variants are a placeholders to variables,You have to provide a value for each variant when generating a component.
 [Mustache.js](https://github.com/janl/mustache.js) is used to replace variants in template.
 example: 
+
+
 ```js
 [
   { name:"template_name",
@@ -56,25 +58,38 @@ example:
        `export default {{variable}}="hello world";`
       ]
     ]
-  }
+  },
+  { name:"SimpleFile",
+    variants:["variant1","variant2","variant3"],
+    template:[
+      ["boilerplate/{{variant1}}.txt",
+      `{{variant1}}+{{variant2}}={{variant3}}`],
+      
+      ]
+    }
 ]
- 
-
 ```
+![React component example](assets\TestExample.gif)
 
 ### Plugin options:
 |Option|Value|Definition
 |------|------|-----|
-|Wrapped|`Default:True`|When enabled first variant  will be used as a wrapper directory for the generated files
-### Generate components
+|Wrapped|`Default:disabled`|When enabled first variant  will be used as a wrapper directory for the generated boilerplate
+
+
+## Generate components:
 - Right click on the intended folder
 - click on `Generate new component...`
-- Fill the nessicary data.
+- Fill the necessary data.
 - Done!
   
 
-##Config file examples:
-### generate react typescript component:
+### example:
+#### ***generate react typescript component :***
+`Wrapped=enabled`
+
+![React component example](assets\reactExample.gif)
+
 `boilerplates.config.js`:
 ```js
 [{name:"react",variants:["componentName"],template:[
@@ -109,13 +124,13 @@ example:
     
   }`,
   ],
-]}];
-
-
+]
+}];
 ```
+
+
 ## report issues and features
 [create an issue](https://github.com/Danzo7/vscode-components-boilerplate/issues)
 ## Roadmap
 - [x] add support for multiple custom boilerplates.
 - [x] add support for custom variables (now only name).
-- ~~add more templates~~.

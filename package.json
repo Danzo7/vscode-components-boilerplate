@@ -7,7 +7,7 @@
   "engines": {
     "vscode": "^1.52.0"
   },
-  "icon": "images/icon.png",
+  "icon": "assets/icon.png",
   "categories": [
     "Snippets",
     "Formatters"
@@ -29,10 +29,11 @@
     "configuration": {
       "title": "Components Boilerplate",
       "properties": {
-        "boilerplate.component.isWrapped":{
+        "boilerplate.component.isWrapped": {
           "type": "boolean",
-          "default": true,
-          "markdownDescription": "Disable this if you don't want to wrap your component. \n > In default generated components are wrapped under a directory name of the first variant in config"}
+          "default": false,
+          "markdownDescription": "Disable this if you don't want to wrap your component. \n > In default generated components are wrapped under a directory name of the first variant in config"
+        }
       }
     },
     "menus": {
