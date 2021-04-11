@@ -30,7 +30,7 @@ export function getBoilerPlatesFromConfig(workspace: string, configfile: string)
                }
         let {name,variants} = boilerplate;
         let fixedVariants = variants.map(item => [item]);
-        inputs.push({"variants":fixedVariants,name});
+        inputs.push({name,"variants":fixedVariants});
     }
   
     return {inputs,boilerplates};

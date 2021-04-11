@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate-generator",
-  "displayName": "Boilerplate Generator",
-  "description": "generate boilerplates folders and files with boilerplate content from a json object,e.g. reactJs components.",
+  "name": "components-boilerplate",
+  "displayName": "Components Boilerplate",
+  "description": "generate boilerplate code/folders/files .e.g. reactJs components.",
   "version": "1.0.0",
   "publisher": "Danzo7",
   "engines": {
@@ -27,12 +27,12 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Boilerplate Generator",
+      "title": "Components Boilerplate",
       "properties": {
-        "boilerplate.generator.isWrapped":{
+        "boilerplate.component.isWrapped":{
           "type": "boolean",
           "default": true,
-          "markdownDescription": "Disable this if you don't want to wrap your component. > In default generated components are wrapped under a directory name of the first variant in config"}
+          "markdownDescription": "Disable this if you don't want to wrap your component. \n > In default generated components are wrapped under a directory name of the first variant in config"}
       }
     },
     "menus": {
@@ -47,7 +47,7 @@
     "commands": [
       {
         "command": "extension.generate-boilerplate",
-        "title": "Generate a new boilerplate...",
+        "title": "Generate new component...",
         "args": "component"
       }
     ]

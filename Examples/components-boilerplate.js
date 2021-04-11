@@ -1,4 +1,4 @@
-[{name:"react",variant:["componentName"],template:[
+[{name:"react",variants:["componentName"],template:[
   [
     '{{componentName}}.tsx',
     `
