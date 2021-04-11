@@ -73,7 +73,7 @@ example:
 ### Plugin options:
 |Option|Value|Definition
 |------|------|-----|
-|Wrapped|`Default:disabled`|When enabled first variant  will be used as a wrapper directory for the generated boilerplate
+|``isWrapped``|`Default:disabled`|When enabled first variant will be used as a wrapper directory for the generated component.
 
 
 ## Generate components:
@@ -85,7 +85,7 @@ example:
 
 ### example:
 #### ***generate react typescript component :***
-`Wrapped=enabled`
+`isWrapped=enabled`
 
 ![React component example](assets/reactExample.gif)
 

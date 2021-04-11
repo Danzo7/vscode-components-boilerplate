@@ -4,6 +4,7 @@
 - Add the ability to have more than one template.
 - Add type definition for config file with type guard.
 - implement a new VSCode Multi step inputs to collect data (selectedTemplate, variants).
+- - Add ``isWrapped`` option to plugin settings.
 - improve Error handling and error messages.
 - cleanUp old code and improve reliability.
 - Docs with gif examples now!.
