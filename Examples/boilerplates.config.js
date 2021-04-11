@@ -20,10 +20,8 @@
   ],
   [
     'index.ts',
-    `
-    import {{componentName}} from './{{componentName}}';
-    export default {{componentName}};    
-    `,
+    `import {{componentName}} from './{{componentName}}';
+export default {{componentName}};`,
   ],
   [
     'index.scss',
