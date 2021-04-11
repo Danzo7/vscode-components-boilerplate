@@ -127,9 +127,18 @@ example:
 }];
 ```
 
+## Where next?
+At this point the plugin has reach its goal, The one that I really need it to be like, a tool to help me organize my project structure and to be able to keep the same structure with all my dev friends and what a satisfaction when its reached a point when I can say "I did it".
+Some says that files structure is small part of the project and you shouldn't [overthink](https://reactjs.org/docs/faq-structure.html#dont-overthink-it) on that, I don't take that advice and here we are.But even though it takes me some time to realize that it was a mistake, I enjoy the idea that could be somebody out there who will find this helpful event though its more possible that nobody really will hear of it, Like a peace of sand in the desert, I may not get a trophy or a complement for the work but I will consider this as an achievement some thing that "I did".
+At the end I have to say thank you to you who's reading this and for the time that you give to try this plugin even if its not the best or the only out there ,So the next is you. 
 
-## report issues and features
-[create an issue](https://github.com/Danzo7/vscode-components-boilerplate/issues)
-## Roadmap
-- [x] add support for multiple custom boilerplates.
-- [x] add support for custom variables (now only name).
+#### TL;DR:
+For me I accomplish my mission and I consider this as a finished product, But their could be people out there with a different mindset and ideas. If you like to contribute to this project You are very welcomed and I will be here (at least if I'm not dead) to accept any [PR](https://github.com/Danzo7/vscode-components-boilerplate/pulls) that provides new things to the plugin, Also feel free to clone or fork the repo if you like to.
+
+To report an issue or request a feature :[create an issue](https://github.com/Danzo7/vscode-components-boilerplate/issues)
+
+### Accomplishments:
+- [x] add support for more than one custom boilerplate.
+- [x] add support for custom variables(variants now) for mustache.js.
+- [x] catch Errors please.
+- [x] Done.s

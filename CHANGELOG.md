@@ -15,7 +15,7 @@
 - change config file structure to hold more than one boilerplate template.
 - change context menu title from `Boil a new component..` to `Generate new component...` .
 ### Fixed
-- Fix a bug when windows config file path is corrupted due to windows file system.
+- Fix a bug when config file path is corrupted due to windows file system .
 - Fix a bug when config file is not of type `boilerplateConfig[]` but its passes to the plugin causing it to crash.
 - Fix Error message when config file is not a valid JS file.
 - Improve error handling and bugs checking.
