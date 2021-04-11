@@ -1,5 +1,5 @@
 ## [1.0.0] - 2021-04-10
-## Added
+### Added
 - Add variants to the config file to be able to use more than one variable.
 - Add the ability to have more than one template.
 - Add type definition for config file with type guard.
@@ -8,13 +8,13 @@
 - improve Error handling and error messages.
 - cleanUp old code and improve reliability.
 - Docs with gif examples now!.
-## Changed  
+### Changed  
 - remove predefined configs(plugin configs are not an option anymore).
 - remove old plugin options for predefined boilerplates.
 - change config file name to `boilerplates.config.js`.
 - change config file structure to hold more than one boilerplate template.
 - change context menu title from `Boil a new component..` to `Generate new component...` .
-## Fixed
+### Fixed
 - Fix a bug when windows config file path is corrupted due to windows file system.
 - Fix a bug when config file is not of type `boilerplateConfig[]` but its passes to the plugin causing it to crash.
 - Fix Error message when config file is not a valid JS file.
