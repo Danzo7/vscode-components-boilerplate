@@ -48,7 +48,7 @@ example:
 ```js
 [
   { name:"template_name",
-    variants:["name","variable"],
+    variants:["name","variable","variant1"],
     template:[
       [`index.js`,
        `import {{variable}} from "{{variant1}}.js"`

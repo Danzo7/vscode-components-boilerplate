@@ -2,8 +2,8 @@
   "name": "components-boilerplate",
   "displayName": "Components Boilerplate",
   "description": "generate boilerplate code/folders/files .e.g. reactJs components.",
-  "version": "1.0.0",
-  "publisher": "Danzo7",
+  "version": "1.0.1",
+  "publisher": "danzo7",
   "engines": {
     "vscode": "^1.52.0"
   },
@@ -32,7 +32,7 @@
         "boilerplate.component.isWrapped": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Disable this if you don't want to wrap your component. \n > In default generated components are wrapped under a directory name of the first variant in config"
+          "markdownDescription": "Disable this if you don't want to wrap your component. \n * When enabled generated components will wrapped in a directory with the first variant as a name."
         }
       }
     },
