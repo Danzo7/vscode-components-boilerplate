@@ -1,3 +1,4 @@
+//isWrapped=enable
 [{name:"react",variants:["componentName"],template:[
   [
     '{{componentName}}.tsx',

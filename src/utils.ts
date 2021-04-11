@@ -13,16 +13,17 @@ export function getBoilerPlatesFromConfig(workspace: string, configfile: string)
     }
     catch (err){
         try {
-            console.warn("tying windows fix");
-            boilerplates = vm.runInThisContext(fs.readFileSync(boilerplateFile.replace("\\", ""), 'utf8'));
-           
+            if (err.message.includes("ENOENT")) {
+                boilerplates = vm.runInThisContext(fs.readFileSync(boilerplateFile.replace("\\", ""), 'utf8')); }
+            else { throw new Error(err);}
         }
         catch (err) {
             if (err.message.includes("ENOENT")) {throw new Error(READ_FAIL);}
             else { throw new Error(NO_CONFIG); }
         }
     }
-     
+    if (!Array.isArray(boilerplates)) {throw new Error(NO_CONFIG);}
+
     let inputs: InputsConfig[] = [];
     for (let boilerplate of boilerplates) {
         if (boilerplates === undefined||!configTypeGuard(boilerplate)) {
