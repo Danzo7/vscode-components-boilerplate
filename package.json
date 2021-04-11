@@ -41,7 +41,7 @@
         {
           "when": "explorerResourceIsFolder",
           "command": "extension.generate-boilerplate",
-          "group": "Hli@React"
+          "group": "Boilerplate"
         }
       ]
     },
