@@ -141,4 +141,4 @@ To report an issue or request a feature :[create an issue](https://github.com/Da
 - [x] add support for more than one custom boilerplate.
 - [x] add support for custom variables(variants now) for mustache.js.
 - [x] catch Errors please.
-- [x] Done.s
+- [x] Done.
