@@ -68,7 +68,7 @@ example:
     }
 ]
 ```
-![React component example](assets\TestExample.gif)
+![React component example](assets/TestExample.gif)
 
 ### Plugin options:
 |Option|Value|Definition
@@ -87,7 +87,7 @@ example:
 #### ***generate react typescript component :***
 `Wrapped=enabled`
 
-![React component example](assets\reactExample.gif)
+![React component example](assets/reactExample.gif)
 
 `boilerplates.config.js`:
 ```js
