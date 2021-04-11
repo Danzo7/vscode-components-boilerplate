@@ -1,7 +1,7 @@
 # Components boilerplate
 ![Logo](assets/logo.png)
 
-    Components boilerplate is a tool to generate code pattern from a predefined configuration.
+    Components boilerplate is a Vscode Plugin to generate code pattern from a predefined configuration.
 This plugin will increase the productivity and help maintain the same files structure across different developers/project.
 ## Guide of usage
 Components boilerplates generates files/folders/code from a giving configuration file.
