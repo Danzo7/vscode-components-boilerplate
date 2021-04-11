@@ -8,7 +8,7 @@ import { READ_FAIL,CANCELLED, NO_CONFIG } from './errors';
 
 async function excute({ fsPath }: { fsPath: string; }) {
 	const config={
-		"isWrapped":workspace.getConfiguration().get("boilerplate.generator.isWrapped"),
+		"isWrapped":workspace.getConfiguration().get("boilerplate.component.isWrapped"),
 	};
 	if (!workspace.workspaceFolders || workspace.workspaceFolders.length < 1) {
 		window.showErrorMessage("please open a workspace first");
@@ -33,6 +33,7 @@ return null;
 		}
 	}
 	catch (e) {
+		console.error(e);
 		switch (e.message){
 			case CANCELLED:
 				window.showInformationMessage("cancelled.");
@@ -44,7 +45,7 @@ return null;
 				window.showErrorMessage("Config File is not valid");
 				break;
 			default:
-				window.showErrorMessage(e.toString());
+				window.showErrorMessage(e.message);
 }
 		}
 

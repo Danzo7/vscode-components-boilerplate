@@ -51,7 +51,7 @@ const buildTemplate = (variant: {[x: string]:string}[], wPath: string, config) =
         fs.writeFileSync(
             path.join(
                 wPath,tPath),
-            content
+            content,{flag:"ax"}
         );
         });
     return;
