@@ -2,8 +2,7 @@
 ![Logo](assets/logo.png)
 
     Components boilerplate is a tool to generate code pattern from a predefined configuration.
-.
->This tool will increase the productivity and help maintain the same files structure across different developers/project.
+This plugin will increase the productivity and help maintain the same files structure across different developers/project.
 ## Guide of usage
 Components boilerplates generates files/folders/code from a giving configuration file.
 ### Creating config file:
