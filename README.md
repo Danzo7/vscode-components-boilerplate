@@ -10,7 +10,7 @@ Components boilerplate generates files/folders/code from a giving configuration 
 ### Creating config file:
 To be able to generate components you have to create a boilerplate config file with the necessary boilerplate template.
 * A valid config file must be in your workspace project directory under the name of `boilerplates.config.js` in order for the plugin to work.
- >[the reason for using `js` file format](#**Why_`js`_instead_of_`json`**:)
+ >[the reason for using `js` file format](#why-js-instead-of-json)
 ### config structure:
 the config file is a javascript file which a single variable with no definition is an array []  `BoilerplateConfig[]`.
 ##### **Type definition:**
