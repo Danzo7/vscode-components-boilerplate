@@ -22,16 +22,16 @@ interface BoilerplateConfig {
 
 | proprieties | definition |
 | -----| ------ | 
-|``name : string``|represent name of the boilerplate,in case you have more then on element in the config array you will be asked to select a boilerplate template by name|
+|``name : string``|Name of the boilerplate,In case you have more then on element in the config array you will be asked to select a boilerplate template by name|
 |``variants : string[]``|array of string will be used later to fill the boilerplate code|
-|``template:[path,content][]``|contain the path and content of the file that will be generated|
+|``template:[path,content][]``|an array of doubles contains the path and content of the file that will be generated|
 
 ```js
 [
   { name:"name",
-    variants:[...],
+    variants:["variant1","variant2",...],
     template:[
-      [path,content],
+      ["path","content"],
       ...
       ]
     },
@@ -40,21 +40,21 @@ interface BoilerplateConfig {
 ```
 
 ### How to use variants:
-variants are a placeholders to variables,You have to provide a value for each variant when generating a component.
-[Mustache.js](https://github.com/janl/mustache.js) is used to replace variants in template.
-example: 
+variants are a placeholders to variables,You will be asked to provide a value for each variant when generating a component.
+Any string that wrapped in double brackets and have a value that exists in variants array will be replaced by the value provided when generating the component. 
+eg:
 
 
 ```js
 [
   { name:"template_name",
-    variants:["name","variable","variant1"],
+    variants:["name","variant","variant1"],
     template:[
       [`index.js`,
-       `import {{variable}} from "{{variant1}}.js"`
+       `import {{variant}} from "{{variant1}}.js"`
       ],
       [`{{variant1}}.js`,
-       `export default {{variable}}="hello world";`
+       `export default {{variant}}="hello world";`
       ]
     ]
   },
@@ -68,12 +68,37 @@ example:
     }
 ]
 ```
+> eg:`{{variant}}` will be replaced to a value giving by the user when generating the component. 
+
 ![React component example](assets/TestExample.gif)
+
+#### Naming Conventions:
+we've added a new feature that allow you to convert the value of variants before replacing them in template into different case styles.
+by providing a `suffix` after the first closing brackets `{{variant}suffix}` with one of the following values the variant placeholder will be replaced by the selected case.
+
+
+|Suffix|Case Style|Definition
+|------|------|-----|
+|``cc``|`camelCase`|the value will be converted to [camelCase](https://en.wikipedia.org/wiki/Camel_case),eg:`hello word`=>`helloWorld`.
+|``sc``|`snake_case`|the value will be converted to [snake_case](https://en.wikipedia.org/wiki/Snake_case),eg:`helloWorld`=>`hello_world`.
+|``pc``|`PascalCase`|the value will be converted to [PascalCase](https://en.wikipedia.org/wiki/Pascal_case),eg:`hello_world`=>`HelloWorld`.
+|``kc``|`kebab-case`|the value will be converted to [kebab-case](https://en.wikipedia.org/wiki/kebab_case),eg:`hello_world`=>`hello-world`.
+
+
+
+* This extension is not that smart so values need to be written in a valid [case styles](https://en.wikipedia.org/wiki/Naming_convention_(programming)) to get a correct conversion.
+
+###### eg:
+`{{variant}sc} //convert to snake_case`
+`hello world` || `HelloWorld`...ext will be converted to `hello_world` as intended.
+
+In other world `hellowoRld` will be converted to `Hellowo_rld`. which is not what we want propably.
+
 
 ### Plugin options:
 |Option|Value|Definition
 |------|------|-----|
-|``isWrapped``|`Default:disabled`|When enabled first variant will be used as a wrapper directory for the generated component.
+|``isWrapped``(***deprecated***)|`Default:disabled`|When enabled first variant will be used as a wrapper directory for the generated component 
 
 
 ## Generate components:
@@ -91,43 +116,41 @@ example:
 
 `boilerplates.config.js`:
 ```js
-[{name:"react",variants:["componentName"],template:[
-  [
-    '{{componentName}}.tsx',
-    `
-  import React from 'react';
-  import './index.scss';
-  interface {{componentName}} {
-  }
-  
-  function {{componentName}}({}: {{componentName}}) {
-    return (
-      <div className="{{componentName}}"></div>
-    );
-  }
-  
-  export default {{componentName}};
-  
-  `,
-  ],
-  [
-    'index.ts',
-    `
-    import {{componentName}} from './{{componentName}}';
-    export default {{componentName}};    
-    `,
-  ],
-  [
-    'index.scss',
-    `.{{componentName}}{
+[
+  {name:"react",variants:["componentName"],template:[
+    [
+      '{{componentName}sc}/{{componentName}pc}.tsx',
+`import React from 'react';
+import './index.scss';
+interface I{{componentName}cc} {
+}
+
+function {{componentName}pc}({}: I{{componentName}cc}) {
+  return (
+    <div className="{{componentName}pc}"></div>
+  );
+}
     
-  }`,
-  ],
-]
-}];
+export default {{componentName}pc};
+
+`,
+    ],
+    [
+      '{{componentName}sc}/index.ts',
+`import {{componentName}pc} from './{{componentName}pc}';
+export default {{componentName}pc};`,
+    ],
+    [
+      '{{componentName}sc}/index.scss',
+      `.{{componentName}kc}{
+      }`,
+    ],
+  ]
+  }
+];
 ```
 
-## Where next?
+## Whats next?
 At this point the plugin has reach its goal, The one that I really need it to be like, a tool to help me organize my project structure and to be able to keep the same structure with all my dev friends and what a satisfaction when its reached a point when I can say "I did it".
 Some says that files structure is small part of the project and you shouldn't [overthink](https://reactjs.org/docs/faq-structure.html#dont-overthink-it) on that, I don't take that advice and here we are.But even though it takes me some time to realize that it was a mistake, I enjoy the idea that could be somebody out there who will find this helpful event though its more possible that nobody really will hear of it, Like a peace of sand in the desert, I may not get a trophy or a complement for the work but I will consider this as an achievement some thing that "I did".
 At the end I have to say thank you to you who's reading this and for the time that you give to try this plugin even if its not the best or the only out there ,So the next is you. 
@@ -138,7 +161,15 @@ For me I accomplish my mission and I consider this as a finished product, But th
 To report an issue or request a feature :[create an issue](https://github.com/Danzo7/vscode-components-boilerplate/issues)
 
 ### Accomplishments:
-- [x] add support for more than one custom boilerplate.
-- [x] add support for custom variables(variants now) for mustache.js.
-- [x] catch Errors please.
-- [x] Done.
+- [x] Fully customizable template boilerplate.
+- [x] Support multi templates and variants.
+- [x] Support Naming conversion.
+- [x] Proper documentation.
+- [x] Add some examples. 
+
+### Ideas that can be implemented:
+- [x] Support Naming conversion.
+- [ ] Add shortcut support.
+- [ ] change the location of config file to /.vscode.
+- [ ] Create config file automatically on first start with .vscode as a location.
+- [ ] Generate a template from a giving file/folder.
