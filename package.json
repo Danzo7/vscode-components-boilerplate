@@ -1,11 +1,11 @@
 {
   "name": "components-boilerplate",
   "displayName": "Components Boilerplate",
-  "description": "generate boilerplate code/folders/files .e.g. reactJs components.",
-  "version": "1.0.1",
+  "description": "Use templates to generate a fully customizable boilerplate code, files or folders .",
+  "version": "1.2.0",
   "publisher": "danzo7",
   "engines": {
-    "vscode": "^1.52.0"
+    "vscode": "^1.63.1"
   },
   "icon": "assets/icon.png",
   "categories": [
@@ -13,13 +13,15 @@
     "Formatters"
   ],
   "keywords": [
-    "create react component",
-    "create component",
-    "generate component",
-    "reactJs component",
-    "custom component folder",
-    "component folder generator",
-    "any component generator"
+    "generate files",
+    "generate widget",
+    "react Js component",
+    "flutter component",
+    "generate boilerplate files",
+    "code generator",
+    "files generator",
+    "customizable boilerplate code generator"
+    
   ],
   "activationEvents": [
     "onCommand:extension.generate-boilerplate"
@@ -27,7 +29,7 @@
   "main": "./dist/extension.js",
   "contributes": {
     "configuration": {
-      "title": "Components Boilerplate",
+      "title": "Components boilerplate",
       "properties": {
         "boilerplate.component.isWrapped": {
           "type": "boolean",
@@ -65,25 +67,24 @@
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
-    "@types/glob": "^7.1.3",
-    "@types/mocha": "^8.0.4",
-    "@types/node": "^12.11.7",
-    "@types/vscode": "^1.52.0",
-    "@types/yargs": "^16.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.9.0",
-    "@typescript-eslint/parser": "^4.9.0",
-    "eslint": "^7.15.0",
-    "glob": "^7.1.6",
-    "mocha": "^8.1.3",
-    "ts-loader": "^8.0.11",
-    "typescript": "^4.1.2",
-    "vscode-test": "^1.4.1",
-    "webpack": "^5.10.0",
-    "webpack-cli": "^4.2.0"
+    "@types/glob": "^7.2.0",
+    "@types/mocha": "^8.2.3",
+    "@types/node": "^12.20.38",
+    "@types/vscode": "^1.63.1",
+    "@types/yargs": "^16.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
+    "glob": "^7.2.0",
+    "mocha": "^8.4.0",
+    "ts-loader": "^8.3.0",
+    "typescript": "^4.5.4",
+    "vscode-test": "^1.6.1",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
-    "@types/mustache": "^4.1.1",
-    "mustache": "^4.1.0"
+    "@shipengine/capitalization": "^1.2.1"
   },
   "repository": {
     "type": "git",
