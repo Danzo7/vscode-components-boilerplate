@@ -1,3 +1,13 @@
+## [1.2.0] - 2021-12-23
+### Added
+- Add values naming convention into diffrent cases styles:
+  - camelCase.
+  - PascalCase.
+  - snake_case.
+  - kebab-case. 
+
+- Upgrade vscode engine.
+
 ## [1.0.0] - 2021-04-10
 ### Added
 - Add variants to the config file to be able to use more than one variable.
