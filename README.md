@@ -223,19 +223,19 @@ FirstStory.args = {
   }
 ];
 ```
-
+[More examples](https://github.com/Danzo7/vscode-components-boilerplate/tree/master/Examples).
 
 ## FAQ 
-#### **Why `js` instead of `json`**:
+#### **Why `js` instead of `json` file format**:
 
-In `Json`  the only way to have newLine characters is to add `\n` character as json does not support new line character, That means if you type the enter key it it will be an invalid `Json` file.
+In `Json` the only way to have newLine characters is to add `\n` character as json does not support new line character, That means if you type the enter key it it will be an invalid `Json` file.
 
 having `\n` after each new line and wrap all lines in a single string is not very readable.
 
 Although its the most used format data it was not possible to use it in this case.
 
 We end up choosing `js` as its the mother of `json`. 
-the main reason for choosing js is because its have  called Template literals (Template strings).
+the main reason for choosing js is because its have  called [Template literals (Template strings)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals).
 
 Using template strings (```backticks(`)``` instead of `quotes("|')`) allow to have newLine characters which make the config file more readable and easy to configure.
 it was also possible to keep a json like highliting by using `js` too.

@@ -12,26 +12,24 @@ function validate(componentName: string): string | null {
 	  	return "component name can not be empty";
 	}
 
-	if (!componentName.match(/^[0-9a-zA-Z]+$/)) {
+	if (!componentName.match(/^[0-9a-zA-Z ]+$/)) {
 		return "component can't have non-alphanumeric character";
 	}
 	return null;
 }
 
 async function showQuickPick({ placeholder, items, onDidSelectItem,description}:Inputs) {
-  const result = await window.showQuickPick(items.map(label => ({ label,description })), {
+  return  window.showQuickPick(items.map(label => ({ label,description })), {
     placeHolder: placeholder,
     onDidSelectItem:onDidSelectItem
   });
-  return result;
 }
 async function showInputBox({placeholder,prompt}) {
-	const result = await window.showInputBox({
+	return window.showInputBox({
     placeHolder: placeholder,
     prompt,
 		validateInput: validate
 	});
-  return result;
 }
 
 export class ShowMultiple{
@@ -45,15 +43,15 @@ export class ShowMultiple{
   async show() {
     await this.walk(this.value);
 }
- 
-  private async walk(value){
+ //TODO:Need to reduce its Cognitive Complexity from 35 to <=15.
+  private async walk(value:any){
     let i = 0;
     if (typeof value === "string") {
       let result;
       while (result === undefined) {
          if (i > 0) { throw new Error(CANCELLED); }
             i++;
-        result = await showInputBox({ placeholder: "Enter a value for " + value,prompt:this.results[0]+": "+(this.details[this.results.length]||this.details[this.details.length-1]) });};
+        result = await showInputBox({ placeholder: "Enter a value for " + value,prompt:this.results[0]+": "+(this.details[this.results.length]||this.details[this.details.length-1]) });}
       this.results.push({[value]:result});
         return result;
      
@@ -63,7 +61,7 @@ export class ShowMultiple{
 
       if (Array.isArray(value[0])) {
         if (value[0].length > 1) {
-          return await this.walk(value[0]);
+          return  this.walk(value[0]);
         }
         else {
           for (let item of value) {

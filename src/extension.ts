@@ -32,7 +32,7 @@ return null;
 			window.showInformationMessage("Boilerplate component successfully generated");
 		}
 	}
-	catch (e) {
+	catch (e:any) {
 		console.error(e);
 		switch (e.message){
 			case CANCELLED:
@@ -53,5 +53,3 @@ return null;
 export function activate(context: ExtensionContext) {
 	context.subscriptions.push(commands.registerCommand('extension.generate-boilerplate', (x) => { excute(x);}));
 }
-
-export function deactivate() { }
