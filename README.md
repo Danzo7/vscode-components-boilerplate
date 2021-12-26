@@ -228,7 +228,7 @@ FirstStory.args = {
   }
 ];
 ```
-[More examples](https://github.com/Danzo7/vscode-components-boilerplate/tree/master/Examples).
+[More examples](https://github.com/Danzo7/vscode-components-boilerplate/tree/master/examples).
 
 ## FAQ 
 #### **Why `js` instead of `json` file format**:
