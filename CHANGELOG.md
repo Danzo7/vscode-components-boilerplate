@@ -1,3 +1,6 @@
+## [1.2.1] - 2021-12-26
+### Fixed
+- Fix error when typing non-alphanumeric value.
 ## [1.2.0] - 2021-12-23
 ### Added
 - Add values naming convention into diffrent cases styles:

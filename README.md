@@ -23,11 +23,16 @@ interface BoilerplateConfig {
 ```
 
 
+##### **Details:**
+
 | proprieties | definition |
 | -----| ------ | 
 |``name : string``|Name of the boilerplate,In case you have more then on element in the config array you will be asked to select a boilerplate template by name|
 |``variants : string[]``|array of string will be used later to fill the boilerplate code|
 |``template:[path,content][]``|an array of doubles contains the path and content of the file that will be generated|
+
+
+
 
 
 ```js
@@ -90,15 +95,15 @@ by providing a `suffix` after the first closing brackets `{{variant}suffix}` wit
 |``pc``|`PascalCase`|the value will be converted to [PascalCase](https://en.wikipedia.org/wiki/Pascal_case),eg:`hello_world`=>`HelloWorld`.
 |``kc``|`kebab-case`|the value will be converted to [kebab-case](https://en.wikipedia.org/wiki/kebab_case),eg:`hello_world`=>`hello-world`.
 
-* This extension is not that smart so values need to be written in a valid [case styles](https://en.wikipedia.org/wiki/Naming_convention_(programming)) to get a correct conversion.
+* This extension is not very smart so values need to be written in a correct language or a valid [case styles](https://en.wikipedia.org/wiki/Naming_convention_(programming)) to get a correct conversion.
 
 #### ***eg***:
 we somewhere in template:
-`{{variant}sc} //will be convert to snake_case`
+`{{variant}sc}` => value will be convert to snake_case.
 
-`hello world` || `HelloWorld`...ext will be  `hello_world` as intended.
+`hello world` || `HelloWorld`...ext =>  `hello_world` as intended.
 
-In other world `hellowoRld` will be  `Hellowo_rld`. which is not what we want propably.
+`hellowoRld` =>  `Hellowo_rld`. which is not what we want propably.
 
 ### Plugin options:
 |Option|Value|Definition
@@ -182,12 +187,12 @@ class _{{widgetName}pc}State extends State<{{widgetName}pc}> {
       '{{componentName}sc}/{{componentName}pc}.tsx',
 `import React from 'react';
 import '.style/index.scss';
-interface I{{componentName}cc} {
+interface I{{componentName}pc} {
 }
 
-function {{componentName}pc}({}: I{{componentName}cc}) {
+function {{componentName}pc}({}: I{{componentName}pc}) {
   return (
-    <div className="{{componentName}pc}"></div>
+    <div className="{{componentName}kc}"></div>
   );
 }
     

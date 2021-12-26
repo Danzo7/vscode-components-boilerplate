@@ -2,7 +2,7 @@
   "name": "components-boilerplate",
   "displayName": "Components Boilerplate",
   "description": "Use templates to generate a fully customizable boilerplate code, files or folders .",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "publisher": "danzo7",
   "engines": {
     "vscode": "^1.63.1"
@@ -34,7 +34,7 @@
         "boilerplate.component.isWrapped": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Disable this if you don't want to wrap your component. \n * When enabled generated components will wrapped in a directory with the first variant as a name."
+          "markdownDescription": "Disable this if you don't want to wrap your component. \n * When enabled generated components will wrapped in a directory with the first variant as a name (deprecated)."
         }
       }
     },

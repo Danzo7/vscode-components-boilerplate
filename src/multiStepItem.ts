@@ -9,11 +9,10 @@ interface Inputs {
 }
 function validate(componentName: string): string | null {  
 	if (!componentName || componentName === "") {
-	  	return "component name can not be empty";
+	  	return "Component name can not be empty";
 	}
-
-	if (!componentName.match(/^[0-9a-zA-Z ]+$/)) {
-		return "component can't have non-alphanumeric character";
+	if (componentName.match(/[<>:;,?"*|/]+$/)) {
+		return "Component name can't contain any of these characters : (<>:;,?\"*)";
 	}
 	return null;
 }
