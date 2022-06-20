@@ -1,3 +1,6 @@
+## [1.2.2] - 2022-06-20
+### Fixed
+- Security update.
 ## [1.2.1] - 2021-12-26
 ### Fixed
 - Fix error when typing non-alphanumeric value.
