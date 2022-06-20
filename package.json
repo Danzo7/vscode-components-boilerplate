@@ -2,7 +2,7 @@
   "name": "components-boilerplate",
   "displayName": "Components Boilerplate",
   "description": "Use templates to generate a fully customizable boilerplate code, files or folders .",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "publisher": "danzo7",
   "engines": {
     "vscode": "^1.63.1"
@@ -21,7 +21,6 @@
     "code generator",
     "files generator",
     "customizable boilerplate code generator"
-    
   ],
   "activationEvents": [
     "onCommand:extension.generate-boilerplate"
@@ -76,7 +75,7 @@
     "@typescript-eslint/parser": "^4.33.0",
     "eslint": "^7.32.0",
     "glob": "^7.2.0",
-    "mocha": "^8.4.0",
+    "mocha": "^10.0.0",
     "ts-loader": "^8.3.0",
     "typescript": "^4.5.4",
     "vscode-test": "^1.6.1",
