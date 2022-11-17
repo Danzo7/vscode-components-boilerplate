@@ -2,7 +2,7 @@
   "name": "components-boilerplate",
   "displayName": "Components Boilerplate",
   "description": "Use templates to generate a fully customizable boilerplate code, files or folders .",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "publisher": "danzo7",
   "engines": {
     "vscode": "^1.63.1"
